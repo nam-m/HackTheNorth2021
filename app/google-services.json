@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1070497583075",
+    "firebase_url": "https://first-project-e75b3-default-rtdb.firebaseio.com",
+    "project_id": "first-project-e75b3",
+    "storage_bucket": "first-project-e75b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070497583075:android:5c67a372b219153e4a5ad6",
+        "android_client_info": {
+          "package_name": "com.example.criminalintent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_DjCZeunz3MCm3ziQVpYq0M55Q8H3fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070497583075:android:3ba10ab948655ad74a5ad6",
+        "android_client_info": {
+          "package_name": "com.example.hackthenorth2021"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_DjCZeunz3MCm3ziQVpYq0M55Q8H3fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070497583075:android:9d43222f3726c0864a5ad6",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_DjCZeunz3MCm3ziQVpYq0M55Q8H3fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070497583075-qp873kd8ssgjlte6mgrab87q8ai6rnp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
