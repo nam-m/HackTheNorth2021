@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardHabit_for_humanity"
-        app:layout_constraintVertical_bias="0.175">
+        app:layout_constraintVertical_bias="0.295">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -35,12 +35,10 @@
         android:layout_margin="20dp"
         android:columnCount="2"
         android:rowCount="2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toEndOf="@+id/cardThe_Salvation_Army"
-        app:layout_constraintTop_toBottomOf="@+id/cardOasis_clothing_bank"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -62,17 +60,8 @@
         android:rowCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376">
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:src="@drawable/group63"
-            tools:layout_editor_absoluteX="221dp"
-            tools:layout_editor_absoluteY="196dp" />
     </GridLayout>
 
     <GridLayout
@@ -80,11 +69,11 @@
         android:layout_width="169dp"
         android:layout_height="234dp"
         android:layout_below="@id/textView"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:columnCount="2"
         android:rowCount="2"
         app:layout_constraintEnd_toStartOf="@+id/cardOasis_clothing_bank"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
@@ -161,10 +150,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:fontFamily="@font/poppins"
+        android:visibility="visible"
+        android:background="?android:attr/windowBackground"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/group63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

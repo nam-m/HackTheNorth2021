@@ -1,11 +1,15 @@
 package com.example.hackthenorth2021;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +34,25 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 //validate(Username.getText().toString(), Password.getText().toString());
             }
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.search:
+                    startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.donate:
+                    startActivity(new Intent(getApplicationContext(), DonateActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.home:
+                    return true;
+            }
+            return true;
         });
     }
 

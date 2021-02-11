@@ -74,23 +74,23 @@ public class ImageLabelling extends AppCompatActivity {
         };
         asyncTask.execute();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.home:
-                        return true;
-                }
-                return true;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.search:
+//                        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.home:
+//                        return true;
+//                }
+//                return true;
+//            }
+//        });
     }
 }
 

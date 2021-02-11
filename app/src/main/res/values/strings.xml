@@ -10,5 +10,10 @@
     <string name="login">Login</string>
     <string name="forget_password">Forget password?</string>
     <string name="giftbox">Giftbox</string>
+    <string name="organizations_near_you">Organizations Near You</string>
     <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="donate">Donate</string>
+    <string name="message">Message</string>
+    <string name="profile">Profile</string>
 </resources>

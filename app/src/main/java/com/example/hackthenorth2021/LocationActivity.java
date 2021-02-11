@@ -1,12 +1,14 @@
 package com.example.hackthenorth2021;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,6 +63,25 @@ public class LocationActivity extends AppCompatActivity {
         buttonFind = findViewById(R.id.bt_find);
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar);
+        bottomNavigationView.setSelectedItemId(R.id.search);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.donate:
+                    startActivity(new Intent(getApplicationContext(), DonateActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.search:
+                    return true;
+            }
+            return true;
+        });
 
         String[] placeTypeList = {"shoes", "clothes", "books"};
 
