@@ -19,6 +19,10 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_donate.*
+import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -45,6 +49,25 @@ class DonateActivity: AppCompatActivity() {
             dispatchTakePictureIntent()
         }
 
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation_bar)
+        bottomNavigationView.selectedItemId = R.id.donate
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.search -> {
+                    startActivity(Intent(applicationContext, LocationActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.donate -> return@OnNavigationItemSelectedListener true
+            }
+            true
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -130,11 +153,11 @@ class DonateActivity: AppCompatActivity() {
             )
             .addFormDataPart("label", "bicycle")
             .build()
-        val request: okhttp3.Request? = okhttp3.Request.Builder()
+        val request: Request? = Request.Builder()
             .url(url)
             .method("POST", body)
             .build()
-        val response: okhttp3.Response? = client.newCall(request).execute()
+        val response: Response? = client.newCall(request).execute()
 
         return response.toString()
     }
