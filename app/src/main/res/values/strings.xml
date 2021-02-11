@@ -3,4 +3,17 @@
     <string name="google_map_key">AIzaSyABl3SrFFPVVqvzZOFqXcE1nsOde_XXaqs</string>
     <string name="button_search">Search</string>
     <string name="location_permission_denied">Location permission denied</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="giftbox">Giftbox</string>
+    <string name="organizations_near_you">Organizations Near You</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="donate">Donate</string>
+    <string name="message">Message</string>
+    <string name="profile">Profile</string>
 </resources>
