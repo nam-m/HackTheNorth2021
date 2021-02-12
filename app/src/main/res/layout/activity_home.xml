@@ -108,7 +108,7 @@
         android:layout_marginTop="108dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="organisations near you"
+        android:text="@string/organizations_near_you"
         android:textColor="#29345A"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
