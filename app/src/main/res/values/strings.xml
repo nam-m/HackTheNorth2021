@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">GiftBox</string>
-    <string name="google_map_key">AIzaSyABl3SrFFPVVqvzZOFqXcE1nsOde_XXaqs</string>
     <string name="button_search">Search</string>
     <string name="location_permission_denied">Location permission denied</string>
     <string name="e_mail">E-mail</string>

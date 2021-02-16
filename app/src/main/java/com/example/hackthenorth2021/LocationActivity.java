@@ -45,7 +45,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class LocationActivity extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity implements OnMapReadyCallback{
     private final String TAG = LocationActivity.class.getSimpleName();
     private Spinner spinnerType;
     private Button buttonFind;
@@ -61,8 +61,11 @@ public class LocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
         spinnerType = findViewById(R.id.sp_type);
         buttonFind = findViewById(R.id.bt_find);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
+        // Register for map callback
+        supportMapFragment.getMapAsync(this);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar);
         bottomNavigationView.setSelectedItemId(R.id.search);
@@ -91,12 +94,11 @@ public class LocationActivity extends AppCompatActivity {
         spinnerType.setAdapter(new ArrayAdapter<>(LocationActivity.this
                 , android.R.layout.simple_spinner_dropdown_item, placeNameList));
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
         if (ActivityCompat.checkSelfPermission(LocationActivity.this
                 , Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "getLocation: permissions granted");
+            // Get current latitude and longitude of user's place
             getCurrentLocation();
         } else {
             ActivityCompat.requestPermissions(LocationActivity.this,
@@ -115,7 +117,7 @@ public class LocationActivity extends AppCompatActivity {
                         "?location=" + currentLat + "," + currentLong +
                         "&radius=30000" + //radius = 30 km
                         "&keyword=" + placeTypeList[i] +
-                        "&key=" + getResources().getString(R.string.google_map_key);
+                        "&key=" + getResources().getString(R.string.google_maps_key);
 
                 Log.d("MapsActivity", "url= " + url);
                 // Execute place task method
@@ -140,23 +142,20 @@ public class LocationActivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        Task<Location> task = mFusedLocationClient.getLastLocation();
+//        FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLat = location.getLatitude();
                     currentLong = location.getLongitude();
-                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(GoogleMap googleMap) {
-                            map = googleMap;
-                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLat, currentLong), 10
-                            ));
-                            Log.d("CurrentLocation:", "lat: "+ currentLat + ", lng: " + currentLong);
-                        }
+                    supportMapFragment.getMapAsync(googleMap -> {
+                        map = googleMap;
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                new LatLng(currentLat, currentLong), 10
+                        ));
+                        Log.d("Current Location:", "lat: "+ currentLat + ", lng: " + currentLong);
                     });
                 }
             }
@@ -177,7 +176,12 @@ public class LocationActivity extends AppCompatActivity {
         }
     }
 
-     private class PlaceTask extends AsyncTask<String, Void, String> {
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+    }
+
+    private class PlaceTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
             String data = null;
@@ -250,12 +254,13 @@ public class LocationActivity extends AppCompatActivity {
             List<HashMap<String, String>> nearbyPlaceList;
             JsonParser parser = new JsonParser();
             nearbyPlaceList = parser.parseResult(s);
-            Log.d("Nearby Places Data","called parse method");
+            Log.d("Nearby Places: ","called parse method");
             showNearbyPlaces(nearbyPlaceList);
         }
 
         private void showNearbyPlaces(List<HashMap<String, String>> nearbyPlaceList) {
-            mMap.clear();
+            if (mMap != null)
+                mMap.clear();
             for (int i=0; i < nearbyPlaceList.size(); i++) {
 
                 MarkerOptions markerOptions = new MarkerOptions();
@@ -274,7 +279,7 @@ public class LocationActivity extends AppCompatActivity {
 
                 mMap.addMarker(markerOptions);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
             }
         }
     }
