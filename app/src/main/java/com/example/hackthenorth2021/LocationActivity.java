@@ -113,11 +113,15 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 // Get selected position of spinner
                 int i = spinnerType.getSelectedItemPosition();
                 // initialize url
-                String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
-                        "?location=" + currentLat + "," + currentLong +
-                        "&radius=30000" + //radius = 30 km
-                        "&keyword=" + placeTypeList[i] +
-                        "&key=" + getResources().getString(R.string.google_maps_key);
+                StringBuilder url = new StringBuilder();
+                url.append("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
+                url.append(currentLat);
+                url.append(",");
+                url.append(currentLong);
+                url.append("&radius=30000&keyword=");
+                url.append(placeTypeList[i]);
+                url.append("&key=");
+                url.append(getResources().getString(R.string.google_maps_key));
 
                 Log.d("MapsActivity", "url= " + url);
                 // Execute place task method
