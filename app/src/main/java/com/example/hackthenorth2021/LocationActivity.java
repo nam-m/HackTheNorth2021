@@ -113,16 +113,17 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
                 // Get selected position of spinner
                 int i = spinnerType.getSelectedItemPosition();
                 // initialize url
-                StringBuilder url = new StringBuilder();
-                url.append("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
-                url.append(currentLat);
-                url.append(",");
-                url.append(currentLong);
-                url.append("&radius=30000&keyword=");
-                url.append(placeTypeList[i]);
-                url.append("&key=");
-                url.append(getResources().getString(R.string.google_maps_key));
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
+                stringBuilder.append(currentLat);
+                stringBuilder.append(",");
+                stringBuilder.append(currentLong);
+                stringBuilder.append("&radius=30000&keyword=");
+                stringBuilder.append(placeTypeList[i]);
+                stringBuilder.append("&key=");
+                stringBuilder.append(getResources().getString(R.string.google_maps_key));
 
+                String url = stringBuilder.toString();
                 Log.d("MapsActivity", "url= " + url);
                 // Execute place task method
 //                new PlaceTask().execute(url);
@@ -243,7 +244,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         @Override
         protected String doInBackground(Object... objects){
             mMap = (GoogleMap)objects[0];
-            url = (String)objects[1];
+            url = (String) objects[1];
 
             try {
                 googlePlacesData = downloadUrl(url);
